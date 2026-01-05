@@ -17,7 +17,9 @@ headers = {
 }
 
 def scrape_all_data():
-    print("Data Scraping in progress...")
+    print("=" * 60)
+    print("\n              Data scraping in progress...\n")
+    print("=" * 60)
 
     for key, url in urls.items():
         try:
@@ -46,7 +48,9 @@ def scrape_all_data():
         except Exception as e:
             print(f"Error scraping {key}: {e}")
 
-    print("\n===============Data scraping complete===============\n")
+    print("=" * 60)
+    print("\n                 Data scraping complete\n")
+    print("=" * 60)
 
 if __name__ == "__main__":
     scrape_all_data()
