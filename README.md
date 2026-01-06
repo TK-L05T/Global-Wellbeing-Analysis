@@ -15,7 +15,7 @@ By utilizing web scraping, statistical anomaly detection, and modern interactive
 | Rubric Category      | Requirement              | Implementation Script      | Key Features                                       |
 | :------------------- | :----------------------- | :------------------------- | :------------------------------------------------- |
 | **Data Acquisition** | Scraped Messy Data (+10) | `scripts/scraper.py`       | Bypasses 403 blocks; multi-source scraping.        |
-| **Data Cleaning**    | [Step-by-Step Description](https://github.com/TK-L05T/Global-Wellbeing-Analysis/edit/main/README.md#step-by-step-data-cleaning-scriptscleanerpy) | `scripts/cleaner.py` | Regex-based entity resolution; outlier removal.    |
+| **Data Cleaning**    | [Step-by-Step Description](https://github.com/TK-L05T/Global-Wellbeing-Analysis/tree/main?tab=readme-ov-file#step-by-step-data-cleaning-scriptscleanerpy) | `scripts/cleaner.py` | Regex-based entity resolution; outlier removal.    |
 | **Analysis**         | Data Science (+15)       | `scripts/analysis.py`      | Z-score normalization; Anomaly detection.          |
 | **Visualization**    | Modern Web Viz (+15)     | `scripts/visualizer.py`    | Plotly interactive HTML with dark-outline markers. |
 
