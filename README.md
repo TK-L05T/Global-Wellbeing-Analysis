@@ -15,7 +15,7 @@ By utilizing web scraping, statistical anomaly detection, and modern interactive
 | Rubric Category      | Requirement              | Implementation Script      | Key Features                                       |
 | :------------------- | :----------------------- | :------------------------- | :------------------------------------------------- |
 | **Data Acquisition** | Scraped Messy Data (+10) | `scripts/scraper.py`       | Bypasses 403 blocks; multi-source scraping.        |
-| **Data Cleaning**    | [Step-by-Step Description](https://github.com/TK-L05T/Global-Wellbeing-Analysis/edit/main/README.md#step-by-step-data-cleaning-scriptscleanpy) | `scripts/cleaner.py` | Regex-based entity resolution; outlier removal.    |
+| **Data Cleaning**    | [Step-by-Step Description](https://github.com/TK-L05T/Global-Wellbeing-Analysis/edit/main/README.md#step-by-step-data-cleaning-scriptscleanerpy) | `scripts/cleaner.py` | Regex-based entity resolution; outlier removal.    |
 | **Analysis**         | Data Science (+15)       | `scripts/analysis.py`      | Z-score normalization; Anomaly detection.          |
 | **Visualization**    | Modern Web Viz (+15)     | `scripts/visualizer.py`    | Plotly interactive HTML with dark-outline markers. |
 
@@ -44,7 +44,7 @@ Wikipedia tables are notoriously inconsistent, so we performed the following "Da
 
 We moved beyond basic averages to perform **Anomaly Detection** using a Health to Wealth Gap metric.
 
-1. **Standardization:** We transformed all raw metrics into Z-scores to allow for direct comparison between USD and Years of Life:
+1. **Standardization:** We transformed all raw metrics into [Z-scores](https://en.wikipedia.org/wiki/Standard_score) to allow for direct comparison between USD and Years of Life:
 
 $$z = \frac{x - \mu}{\sigma}$$
  
@@ -56,7 +56,7 @@ $$z = \frac{x - \mu}{\sigma}$$
 
     * **Negative Outliers:** Countries with a gap <−1.0 (Health outcomes lag significantly behind economic capacity).
 
-*Later used in [visualization](link) to report the data*
+*Later used in <ins>visualization</ins> to report the data*
 
 - - - -
 
@@ -90,3 +90,34 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
+- - - -
+
+## 📁 Project Structure
+
+```text
+P4-Global-Wellbeing-Analysis/
+├── data/                    # Data Storage Pipeline
+│   ├── charts/              # Interactive HTML files (Browser View)
+│   ├── processed/           # Merged master_data.csv
+│   ├── raw/                 # Unprocessed Wikipedia CSVs
+│   └── results/             # Analysis output (Outliers & Z-Scores)
+|
+├── scripts/                 # Core Logic (Modular Scripts)
+│   ├── __init__.py          # Makes the folder a Python package
+│   ├── analysis.py          # 3. Z-Score & Anomaly Detection
+│   ├── data_manager.py      # 2. Regex cleaning & data merging
+│   ├── scrape.py            # 1. Web scraping (Wikipedia)
+│   └── visualizer.py        # 4. Plotly Interactive Visuals
+|
+├── main.py                  # Master Script: Runs the entire pipeline
+├── README.md                # Project documentation and rubric mapping
+└── requirements.txt         # List of required Python libraries
+```
+
+`main.py`: Running this single command executes the scraper, cleaner, analyzer, and visualizer in order.
+
+`scripts/`: Contains the files than run the project. Each file is dedicated to one specific task to keep the code clean and maintainable.
+
+`data/`: We followed a tiered data architecture. This ensures the "raw" data is never accidentally changed, and all "processed" results are kept separate for easy review.
+
+`charts/`: The final output. These .html files are standalone interactive dashboards that can be opened in any web browser. Made after running `visualizer.py`.
